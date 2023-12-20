@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user>
+        <email>johndoe@email.com</email>
+        <firstname>John</firstname>
+        <lastname>Doe</lastname>
+        <password>$2a$10$OReQzmNDmZQ32TNJopczU.xXqMI0/vnsTY44uvGu9vX3/UcH.xUbq</password>
+        <role>User</role>
+    </user>
+    <user>
+        <email>phong.tran1@snhu.edu</email>
+        <firstname>Phong</firstname>
+        <lastname>Tran</lastname>
+        <password>$2a$10$UMGSWXe3KVYE9yDBAM8ateh.Vw.HRf0eSqGlDb4CFAXNuUqpyoNpm</password>
+        <role>User</role>
+    </user>
+</users>
