@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FlightClassRepo extends JpaRepository<TravelClassEntity, Integer> {
+public interface TravelClassRepo extends JpaRepository<TravelClassEntity, Integer> {
 }

@@ -20,15 +20,18 @@ import lombok.NoArgsConstructor;
 @IdClass(FlightOfferPK.class)
 public class FlightOfferEntity {
     @Id
-    @Column(name = "TRAVEL_CLASS_ID")
-    private int travelClassId;
+    @ManyToOne
+    @JoinColumn(name = "TRAVEL_CLASS_ID", nullable = false)
+    private TravelClassEntity travelClass;
 
     @Id
-    @Column(name="FLIGHT_ID")
-    private int flightId;
+    @ManyToOne
+    @JoinColumn(name = "FLIGHT_ID", nullable = false)
+    private FlightEntity flight;
 
     @Column(name="AVAILABLE_SEAT")
     private int availableSeat;
 
+    @Column(name="COST")
     private double cost;
 }

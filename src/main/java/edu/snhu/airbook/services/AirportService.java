@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Airport service class
+ *
+ * @author phongtran
+ */
 @Service
 public class AirportService {
     @Autowired
@@ -33,8 +38,19 @@ public class AirportService {
      * @return Airport if present
      */
     public AirportDto getAirportById(Integer id) {
-        AirportEntity airport = airportRepo.getReferenceById(id);
-        return mapAirportDto(airport);
+        Optional<AirportEntity> airport = airportRepo.findById(id);
+        return airport.map(this::mapAirportDto).orElse(null);
+    }
+
+    /**
+     * Get Airport by Airport IATA.
+     *
+     * @param iata airport IATA
+     * @return Airport if present
+     */
+    public AirportDto getAirportByIata(String iata) {
+        List<AirportEntity> airports = airportRepo.findByIataContainingIgnoreCase(iata);
+        return mapAirportDto(airports.get(0));
 
     }
 

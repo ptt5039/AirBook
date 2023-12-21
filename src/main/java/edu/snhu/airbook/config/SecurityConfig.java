@@ -31,10 +31,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .securityMatcher("/login", "/signup", "/bookflight", "/", "", "/home")
-                .authorizeHttpRequests(authorize -> authorize.requestMatchers("POST", "GET").permitAll())
-                .securityMatcher("/**")
-                .authorizeHttpRequests(authorize->authorize.anyRequest().permitAll());
+//                .securityMatcher("/login", "/signup", "/bookflight", "/", "", "/home")
+//                .authorizeHttpRequests(authorize -> authorize.requestMatchers("POST", "GET").permitAll())
+//                .securityMatcher("/**", "/h2/**")
+//                .authorizeHttpRequests(authorize->authorize.anyRequest().permitAll())
+                .cors(AbstractHttpConfigurer::disable);
         return http.build();
     }
 }

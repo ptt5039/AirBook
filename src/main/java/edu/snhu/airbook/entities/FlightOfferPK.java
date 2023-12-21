@@ -15,6 +15,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FlightOfferPK implements Serializable {
-    private int travelClassId;
-    private int flightId;
+    private TravelClassEntity travelClass;
+    private FlightEntity flight;
 }

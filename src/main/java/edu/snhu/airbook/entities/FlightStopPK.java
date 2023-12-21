@@ -13,6 +13,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class FlightStopPK implements Serializable {
-    private int flightId;
-    private int airportId;
+    private FlightEntity flight;
+    private AirportEntity airport;
 }

@@ -20,13 +20,18 @@ public class AirportEntity {
     @Column(name = "AIRPORT_ID")
     private int airportId;
 
+    @Column(name = "ICAO")
     private String icao;
 
+    @Column(name = "IATA")
     private String iata;
 
+    @Column(name = "NAME")
     private String name;
 
+    @Column(name = "STATE")
     private String state;
 
+    @Column(name = "COUNTRY")
     private String country;
 }

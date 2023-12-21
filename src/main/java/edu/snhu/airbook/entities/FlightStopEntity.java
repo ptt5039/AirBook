@@ -17,12 +17,14 @@ import lombok.*;
 @IdClass(FlightStopPK.class)
 public class FlightStopEntity {
     @Id
-    @Column(name="FLIGHT_ID")
-    private int flightId;
+    @ManyToOne
+    @JoinColumn(name = "FLIGHT_ID", nullable = false)
+    private FlightEntity flight;
 
     @Id
-    @Column(name="AIRPORT_ID")
-    private int airportId;
+    @ManyToOne
+    @JoinColumn(name = "AIRPORT_ID", nullable = false)
+    private AirportEntity airport;
 
     @Column(name="ORDER_NUMBER")
     private int orderNumber;

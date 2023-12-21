@@ -13,8 +13,10 @@ document.getElementById("roundTrip").addEventListener("click", tripSelector);
 function tripSelector(e) {
     if(e.target.id == "oneWay") {
         document.getElementById("returnDate").disabled = true;
+        document.getElementById("roundTrip").checked = false;
     } else {
         document.getElementById("returnDate").disabled = false;
+        document.getElementById("oneWay").checked = false;
     }
 }
 
@@ -68,7 +70,8 @@ function onReturnDateInput(e) {
     if(new Date(departureDate) < date){
         document.getElementById("returnDateText").innerText = date.toUTCString().replace(" 00:00:00 GMT", "");
     } else {
-        document.getElementById("returnDate")
+        document.getElementById("returnDateText").innerText = "";
+//        document.getElementById("returnDate").setCustomValidity("Return date must be after depart date!")
     }
 }
 

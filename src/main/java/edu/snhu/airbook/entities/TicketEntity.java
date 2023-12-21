@@ -22,11 +22,13 @@ public class TicketEntity {
     @Column(name = "TICKET_NUMBER")
     private int ticketNumber;
 
-    @Column(name = "FLIGHT_ID")
-    private int flightId;
+    @ManyToOne
+    @JoinColumn(name = "FLIGHT_ID", nullable = false)
+    private FlightEntity flight;
 
-    @Column(name = "CLASS_ID")
-    private int classId;
+    @ManyToOne
+    @JoinColumn(name = "CLASS_ID", nullable = false)
+    private TravelClassEntity travelClass;
 
     @Column(name = "PASSENGER_FIRST_NAME")
     private String passengerFirstName;
@@ -43,6 +45,7 @@ public class TicketEntity {
     @Column(name = "TOTAL_COST")
     private double totalCost;
 
-    @Column(name = "STATUS_ID")
-    private int statusId;
+    @ManyToOne
+    @JoinColumn(name = "STATUS_ID", nullable = false)
+    private TicketStatusEntity statusId;
 }

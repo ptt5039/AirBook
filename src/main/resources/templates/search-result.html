@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+<section class="flight-offer-list" layout:fragment="body">
+    <div>
+        <span class="h1">Depart: </span>
+        <span class="h2" th:text="|${departureAirport.iata} |"></span>
+        <i class=" h2 bi bi-airplane"></i>
+        <span class="h2" th:text="| ${arrivalAirport.iata}|"></span>
+        <h5><span th:text="${departureAirport.name}"></span> to <span th:text="${arrivalAirport.name}"></span></h5>
+
+        <div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 th:text="|Depart date: ${departDate}|"></h3>
+                    <table class="table table-borderless">
+                        <thead>
+                        <tr>
+                            <th scope="col">Departing flights</th>
+                            <th scope="col">Number of stops</th>
+                            <th class="p-3 mb-2 bg-primary text-white" scope="col">Economy Class</th>
+                            <th class="p-3 mb-2 bg-info text-white" scope="col">Business Class</th>
+                            <th class="p-3 mb-2 bg-success text-white" scope="col">First Class</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                        <th:block th:each="flight : ${departFlights}">
+                            <tr th:id="${flight.flightId}">
+                                <th scope="row">
+                                    <div th:text="|#${flight.flightNumber}|"></div>
+                                    <span th:text="${flight.departureTime}"></span>
+                                    <i class="bi bi-arrow-right"></i>
+                                    <span th:text="${flight.arrivalTime}"></span>
+                                </th>
+                                <td>
+                                    <span th:text="${#lists.size(flight.flightStops) > 0 ? #lists.size(flight.flightStops) + (#lists.size(flight.flightStops) == 1 ? ' stop' : ' stops') : 'Nonstop'}"></span>
+                                    <br>
+                                    <span th:each="stop : ${flight.flightStops}">
+                                        <span class="small"
+                                              th:text="${stop.orderNumber == 1 ? 'Change planes at ' : ''}"></span>
+                                        <span class="small" th:text="${stop.airport.iata}"></span>
+                                        <span class="small"
+                                              th:text="${stop.orderNumber != #lists.size(flight.flightStops) ? ' and ' : ''}"></span>
+                                    </span>
+                                </td>
+                                <td th:each="offer: ${flight.flightOffers}">
+                                    <div class="border border-secondary">
+                                        <span th:text="|$${offer.cost}|"></span>
+                                        <div class="small" th:text="|${offer.availableSeat} seat(s) left|"></div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div th:class="${returnFlights != null ? '' : 'd-none'}">
+        <span class="h1">Return: </span>
+        <span class="h2" th:text="|${arrivalAirport.iata} |"></span>
+        <i class="h2 bi bi-airplane icon-rotate-90"></i>
+        <span class="h2" th:text="| ${departureAirport.iata}|"></span></h2>
+        <h5><span th:text="${arrivalAirport.name}"></span> to <span th:text="${departureAirport.name}"></span></h5>
+        <div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 th:text="|Return date: ${returnDate}|"></h3>
+                    <table class="table table-borderless">
+                        <thead>
+                        <tr>
+                            <th scope="col">Returning flights</th>
+                            <th scope="col">Number of stops</th>
+                            <th class="p-3 mb-2 bg-primary text-white" scope="col">Economy Class</th>
+                            <th class="p-3 mb-2 bg-info text-white" scope="col">Business Class</th>
+                            <th class="p-3 mb-2 bg-success text-white" scope="col">First Class</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                        <th:block th:each="flight : ${returnFlights}">
+                            <tr th:id="${flight.flightId}">
+                                <th scope="row">
+                                    <div th:text="|#${flight.flightNumber}|"></div>
+                                    <p th:text="|${flight.departureTime} -> ${flight.arrivalTime}"></p>
+                                </th>
+                                <td>
+                                    <span th:text="${#lists.size(flight.flightStops) > 0 ? #lists.size(flight.flightStops) + (#lists.size(flight.flightStops) == 1 ? ' stop' : ' stops') : 'Nonstop'}"></span>
+                                    <br>
+                                    <span th:each="stop : ${flight.flightStops}">
+                                        <span class="small"
+                                              th:text="${stop.orderNumber == 1 ? 'Change planes at ' : ''}"></span>
+                                        <span class="small" th:text="${stop.airport.iata}"></span>
+                                        <span class="small"
+                                              th:text="${stop.orderNumber != #lists.size(flight.flightStops) ? ' and ' : ''}"></span>
+                                    </span>
+                                </td>
+                                <td th:each="offer: ${flight.flightOffers}">
+                                    <p class="border border-secondary">
+                                        <span th:text="|$${offer.cost}|"></span>
+                                        <br>
+                                        <span class="small" th:text="|${offer.availableSeat} seat(s) left|"></span>
+                                    </p>
+
+                                </td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -3284,7 +3284,7 @@ INSERT INTO AIRPORT (ICAO,IATA,NAME,STATE,COUNTRY) VALUES
 	 ('VORY','RJA','Rajahmundry Airport','Andhra Pradesh','IN'),
 	 ('VEDG','RDP','Kazi Nazrul Islam Airport','West Bengal','IN'),
 	 ('VOCL','CCJ','Calicut International Airport','Kerala','IN'),
-	 ('KIND','IND','Indianapolis International Airport','Gujarat','IN'),
+	 ('KIND','IND','Indianapolis International Airport','Indiana','US'),
 	 ('VOBI','BEP','Bellary Airport','Karnataka','IN'),
 	 ('VIPT','PGH','Pantnagar Airport','Uttarakhand','IN'),
 	 ('VIHR','HSS','Hisar Airport','Haryana','IN'),
@@ -7751,3 +7751,16 @@ INSERT INTO AIRPORT (ICAO,IATA,NAME,STATE,COUNTRY) VALUES
 	 ('FVCH','CHJ','Chipinge Airport','Manicaland','ZW'),
 	 ('FVKB','KAB','Kariba Airport','Mashonaland West','ZW'),
 	 ('FVHA','HRE','Robert Gabriel Mugabe International Airport','Harare','ZW');
+
+INSERT INTO TRAVEL_CLASS (TRAVEL_CLASS_NAME) VALUES
+	 ('Economy'),
+	 ('Business'),
+	 ('First');
+
+INSERT INTO FLIGHT (DEPARTURE_AIRPORT,ARRIVAL_AIRPORT,FLIGHT_NUMBER,DEPARTURE_DATE,DEPARTURE_TIME,ARRIVAL_DATE,ARRIVAL_TIME) VALUES
+	 (6153,3286,'A001','2023-12-20','18:00:00','2023-12-20','20:15:00'),
+	 (3286,6153,'A002','2023-12-21','09:00:00','2023-12-21','11:10:00'),
+	 (6153,3286,'B025','2023-12-20','06:30:00','2023-12-20','08:45:00'),
+	 (6153,3286,'H095','2023-12-20','13:15:00','2023-12-20','15:30:00'),
+	 (3286,6153,'B38','2023-12-20','09:00:00','2023-12-20','11:10:00'),
+	 (3286,6153,'H065','2023-12-21','15:35:00','2023-12-21','17:50:00');

@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * User Service
+ *
+ * @author phongtran
+ */
 @Service
 @Slf4j
 public class UserService {
