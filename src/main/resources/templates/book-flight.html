@@ -28,9 +28,10 @@
                         </label>
                     </div>
                 </div>
+
                 <div class="container">
                     <div class="row">
-                        <div class="col">
+                        <div class="col mb-4">
                             <label for="departureInput" class="form-label">DEPART</label>
                             <input
                                     class="form-control form-control-lg"
@@ -49,8 +50,7 @@
                             <div class="small invalid-feedback">Enter a valid departure airport.</div>
                             <span class="small" id="departLocationText"></span>
                         </div>
-
-                        <div class="col">
+                        <div class="col mb-4">
                             <label for="arrivalInput" class="form-label">ARRIVE</label>
                             <input
                                     class="form-control form-control-lg"
@@ -70,7 +70,7 @@
                             <span class="small" id="arriveLocationText"></span>
                         </div>
 
-                        <div class="datepicker col">
+                        <div class="datepicker col mb-4">
                             <label for="departDate" class="form-label">DEPART DATE</label>
                             <input
                                     class="form-control"
@@ -83,7 +83,7 @@
                             <div class="small invalid-feedback">Enter depart date.</div>
                             <span class="small" id="departureDateText"></span>
                         </div>
-                        <div class="datepicker col">
+                        <div class="datepicker col mb-4">
                             <label for="returnDate" class="form-label">RETURN DATE</label>
                             <input
                                     class="form-control"
@@ -91,7 +91,7 @@
                                     id="returnDate"
                                     name="returnDate"
                                     th:field="*{returnDate}"
-                                    value=""
+                                    placeholder=" "
                                     required>
                             <div class="small invalid-feedback">Enter return date.</div>
                             <span class="small" id="returnDateText"></span>
@@ -115,11 +115,11 @@
                         </div>
 
                     </div>
-                    <div class="row">
-                        <button id="searchButton" class="w-25 btn btn-primary btn-lg col" type="submit">Search</button>
-                    </div>
-                </div>
 
+                </div>
+                <span class="d-flex justify-content-end">
+                    <button id="searchButton" class="w-10 btn btn-success btn-lg" type="submit">Search</button>
+                </span>
             </form>
         </div>
     </div>

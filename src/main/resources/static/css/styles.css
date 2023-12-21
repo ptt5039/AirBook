@@ -19,11 +19,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: auto;
 }
 
-.invalid {
-    color: red;
-    display: none;
-}
-
 .flight-offer-list {
     margin-left: 15%;
     margin-right: 15%;
