@@ -26,17 +26,19 @@ public class XmlUtil {
 
     /**
      * encoding raw password
+     *
      * @param rawPassword raw password
      * @return encoded password
      */
     public static String passwordEncoder(String rawPassword) {
         PasswordEncoder encoder = SecurityConfig.passwordEncoder();
-            return encoder.encode(rawPassword);
+        return encoder.encode(rawPassword);
     }
 
     /**
      * Compare raw password with encoded password
-     * @param rawPassword raw password
+     *
+     * @param rawPassword     raw password
      * @param encodedPassword encoded password
      * @return true if match
      */
@@ -92,7 +94,7 @@ public class XmlUtil {
             XmlUsers xmlUsers = (XmlUsers) jaxbUnmarshaller.unmarshal(xmlFile);
             for (XmlUser xmlUser : xmlUsers.getUsers()) {
                 if (matchPassword(credential.getPassword(), xmlUser.getPassword())
-                        && xmlUser.getEmail().equalsIgnoreCase(credential.getEmail())){
+                        && xmlUser.getEmail().equalsIgnoreCase(credential.getEmail())) {
                     return xmlUser;
                 }
             }

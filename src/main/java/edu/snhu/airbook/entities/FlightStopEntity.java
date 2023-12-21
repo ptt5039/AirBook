@@ -9,7 +9,7 @@ import lombok.*;
  * @author phongtran
  */
 @Entity
-@Table(name="FLIGHT_STOP")
+@Table(name = "FLIGHT_STOP")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,6 +26,6 @@ public class FlightStopEntity {
     @JoinColumn(name = "AIRPORT_ID", nullable = false)
     private AirportEntity airport;
 
-    @Column(name="ORDER_NUMBER")
+    @Column(name = "ORDER_NUMBER")
     private int orderNumber;
 }

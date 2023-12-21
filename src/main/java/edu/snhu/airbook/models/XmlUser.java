@@ -5,59 +5,59 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 @Getter
-@XmlRootElement(name="user")
+@XmlRootElement(name = "user")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class XmlUser {
-	/**
-	 * user email.
-	 */
-	private String email;
-	
-	/**
-	 * user password
-	 * Can not be accessed
-	 */
-	private String password;
-	
-	/**
-	 * First name
-	 */
-	private String firstName;
-	
-	/**
-	 * Last name
-	 */
-	private String lastName;
+    /**
+     * user email.
+     */
+    private String email;
 
-	/**
-	 * Role
-	 */
-	private String role;
+    /**
+     * user password
+     * Can not be accessed
+     */
+    private String password;
 
-	@XmlElement
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    /**
+     * First name
+     */
+    private String firstName;
 
-	@XmlElement
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    /**
+     * Last name
+     */
+    private String lastName;
 
-	@XmlElement(name="firstname")
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    /**
+     * Role
+     */
+    private String role;
 
-	@XmlElement(name="lastname")
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    @XmlElement
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	@XmlElement(name="role")
-	public void setRole(String role) {
-		this.role = role;
-	}
+    @XmlElement
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @XmlElement(name = "firstname")
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @XmlElement(name = "lastname")
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @XmlElement(name = "role")
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

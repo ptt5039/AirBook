@@ -5,21 +5,21 @@ import lombok.*;
 
 /**
  * Ticket status entity
- * 
+ *
  * @author phongtran
  */
 @Entity
-@Table(name="TICKET_STATUS")
+@Table(name = "TICKET_STATUS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class TicketStatusEntity {
-	@Id
-	@Column(name="STATUS_ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int statusId;
+    @Id
+    @Column(name = "STATUS_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int statusId;
 
-	@Column(name="STATUS_NAME")
-	private String statusName;
+    @Column(name = "STATUS_NAME")
+    private String statusName;
 }

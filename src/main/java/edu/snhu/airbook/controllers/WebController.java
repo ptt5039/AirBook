@@ -14,6 +14,7 @@ public class WebController {
 
     /**
      * Home
+     *
      * @param model model
      * @return
      */
@@ -25,6 +26,7 @@ public class WebController {
 
     /**
      * Login
+     *
      * @param credential
      * @param model
      * @return

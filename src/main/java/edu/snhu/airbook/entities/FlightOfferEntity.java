@@ -29,9 +29,9 @@ public class FlightOfferEntity {
     @JoinColumn(name = "FLIGHT_ID", nullable = false)
     private FlightEntity flight;
 
-    @Column(name="AVAILABLE_SEAT")
+    @Column(name = "AVAILABLE_SEAT")
     private int availableSeat;
 
-    @Column(name="COST")
+    @Column(name = "COST")
     private double cost;
 }

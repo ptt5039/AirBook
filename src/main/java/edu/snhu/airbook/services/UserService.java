@@ -23,6 +23,7 @@ public class UserService {
 
     /**
      * Get  All users
+     *
      * @return List of UserDto
      */
     public List<UserDto> getAllUsers() {

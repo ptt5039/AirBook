@@ -15,6 +15,7 @@ public class SecurityConfig {
 
     /**
      * Spring security password encoder
+     *
      * @return new BCryptPasswordEncoder object
      */
     @Bean
@@ -24,6 +25,7 @@ public class SecurityConfig {
 
     /**
      * Filter chain
+     *
      * @param http Http Security
      * @return SecurityFilterChain
      * @throws Exception exception
@@ -31,10 +33,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-//                .securityMatcher("/login", "/signup", "/bookflight", "/", "", "/home")
-//                .authorizeHttpRequests(authorize -> authorize.requestMatchers("POST", "GET").permitAll())
-//                .securityMatcher("/**", "/h2/**")
-//                .authorizeHttpRequests(authorize->authorize.anyRequest().permitAll())
                 .cors(AbstractHttpConfigurer::disable);
         return http.build();
     }

@@ -9,7 +9,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-@XmlRootElement(name="users")
+@XmlRootElement(name = "users")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter

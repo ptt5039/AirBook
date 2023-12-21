@@ -13,6 +13,7 @@ public class DateTimeConverter {
 
     /**
      * Convert time to formatted String
+     *
      * @param time SQL Time
      * @return formatted String
      */
@@ -32,7 +33,7 @@ public class DateTimeConverter {
             }
         } else {
             period = " AM";
-            if(hour == 0) {
+            if (hour == 0) {
                 newTime = "12:" + newMinutes + period;
             } else {
                 newTime = hour + ":" + newMinutes + period;
@@ -43,6 +44,7 @@ public class DateTimeConverter {
 
     /**
      * convert Date to formatted String
+     *
      * @param date Date object
      * @return formatted string
      */

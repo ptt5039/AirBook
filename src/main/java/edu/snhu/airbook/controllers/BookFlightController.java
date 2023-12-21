@@ -24,6 +24,7 @@ public class BookFlightController {
 
     /**
      * Book Flight
+     *
      * @param model Spring Model
      * @return String
      */
@@ -38,8 +39,9 @@ public class BookFlightController {
 
     /**
      * Search for flights
+     *
      * @param flightSearchCriteria flight search criteria
-     * @param model Spring model
+     * @param model                Spring model
      * @return String
      */
     @GetMapping("/bookFlight/search")
@@ -50,12 +52,13 @@ public class BookFlightController {
         if (flightSearchCriteria.isRoundTrip()) {
             model.addAttribute("returnDate", DateTimeConverter.convertDateToFormattedString(flightSearchCriteria.getReturnDate()));
             String departureAirport = flightSearchCriteria.getArrivalAirport();
-            String arrivalAirport =  flightSearchCriteria.getDepartureAirport();
+            String arrivalAirport = flightSearchCriteria.getDepartureAirport();
             Date departDate = flightSearchCriteria.getReturnDate();
             flightSearchCriteria.setDepartureAirport(departureAirport);
             flightSearchCriteria.setArrivalAirport(arrivalAirport);
             flightSearchCriteria.setDepartDate(departDate);
-            returnFlights = flightService.searchFlights(flightSearchCriteria);;
+            returnFlights = flightService.searchFlights(flightSearchCriteria);
+            ;
         }
         FlightDto flight = departFlights.get(0);
         model.addAttribute("departureAirport", flight.getDepartureAirport());
