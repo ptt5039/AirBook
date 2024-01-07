@@ -10,30 +10,20 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class XmlUser {
-    /**
-     * user email.
-     */
+    //user email
     private String email;
 
-    /**
-     * user password
-     * Can not be accessed
-     */
+    //user password
+    //Can not be accessed
     private String password;
 
-    /**
-     * First name
-     */
+    //first name
     private String firstName;
 
-    /**
-     * Last name
-     */
+    //last name
     private String lastName;
 
-    /**
-     * Role
-     */
+    //role
     private String role;
 
     @XmlElement

@@ -11,11 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 import java.util.List;
 
 @Controller
+@RequestMapping("bookFlight")
 public class BookFlightController {
     @Autowired
     AirportService airportService;
@@ -28,7 +30,7 @@ public class BookFlightController {
      * @param model Spring Model
      * @return String
      */
-    @GetMapping("/bookFlight")
+    @GetMapping
     public String bookFlight(Model model) {
         List<AirportDto> airports = airportService.getAllAirports();
         FlightSearchCriteria flightSearchCriteria = new FlightSearchCriteria();
@@ -44,7 +46,7 @@ public class BookFlightController {
      * @param model                Spring model
      * @return String
      */
-    @GetMapping("/bookFlight/search")
+    @GetMapping("/search")
     public String flightList(@ModelAttribute("flightSearch") FlightSearchCriteria flightSearchCriteria, Model model) {
         model.addAttribute("departDate", DateTimeConverter.convertDateToFormattedString(flightSearchCriteria.getDepartDate()));
         List<FlightDto> departFlights = flightService.searchFlights(flightSearchCriteria);
@@ -58,13 +60,12 @@ public class BookFlightController {
             flightSearchCriteria.setArrivalAirport(arrivalAirport);
             flightSearchCriteria.setDepartDate(departDate);
             returnFlights = flightService.searchFlights(flightSearchCriteria);
-            ;
+            model.addAttribute("returnFlights", returnFlights);
         }
         FlightDto flight = departFlights.get(0);
         model.addAttribute("departureAirport", flight.getDepartureAirport());
         model.addAttribute("arrivalAirport", flight.getArrivalAirport());
         model.addAttribute("departFlights", departFlights);
-        model.addAttribute("returnFlights", returnFlights);
         return "search-result";
     }
 }

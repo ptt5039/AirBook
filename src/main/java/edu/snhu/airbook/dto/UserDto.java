@@ -13,28 +13,18 @@ import lombok.Setter;
 @Setter
 @Builder
 public class UserDto {
-    /**
-     * user email.
-     */
+    //user email
     private String email;
 
-    /**
-     * user password
-     */
+    //user password
     private String password;
 
-    /**
-     * First name
-     */
+    //first name
     private String firstName;
 
-    /**
-     * Last name
-     */
+    //last name
     private String lastName;
 
-    /**
-     * Role
-     */
+    //role
     private String role;
 }

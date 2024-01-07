@@ -12,13 +12,9 @@ import lombok.*;
 @Data
 @Builder
 public class Credential {
-    /**
-     * Email
-     */
+    //email
     private String email;
 
-    /**
-     * Password
-     */
+    //password
     private String password;
 }

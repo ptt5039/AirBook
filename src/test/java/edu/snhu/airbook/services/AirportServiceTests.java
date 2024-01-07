@@ -22,7 +22,7 @@ import static org.mockito.Mockito.doReturn;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-public class AirportServiceTest {
+public class AirportServiceTests {
     @Mock
     private AirportRepo airportRepo;
 
@@ -103,7 +103,7 @@ public class AirportServiceTest {
      * Test getAirportByIata method
      */
     @Test
-    public void getAirportsByIataOrName() {
+    public void getAirportsByIataOrNameTest() {
         doReturn(Collections.singletonList(ENTITY_1)).when(airportRepo).findByIataContainingIgnoreCase(IATA_1);
         doReturn(Collections.singletonList(ENTITY_2)).when(airportRepo).findByNameContainingIgnoreCase(IATA_1);
 

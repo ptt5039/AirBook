@@ -14,9 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 public class XmlUsers {
-    /**
-     * List of users
-     */
+    //List of users
     @XmlElement(name = "user")
     private List<XmlUser> users;
 }
