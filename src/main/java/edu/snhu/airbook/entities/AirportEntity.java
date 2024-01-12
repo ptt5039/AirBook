@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 /**
- * Airport Entity
+ * Airport Entity.
  *
  * @author phongtran
  */

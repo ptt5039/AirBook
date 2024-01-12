@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class FlightStopDto {
-    private FlightDto flight;
     private AirportDto airport;
     private int orderNumber;
 }

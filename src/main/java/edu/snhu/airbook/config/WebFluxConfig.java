@@ -4,6 +4,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 
+/**
+ * WebFlux Config
+ */
 @Configuration
 public class WebFluxConfig implements WebFluxConfigurer {
     @Override

@@ -20,3 +20,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+amadeus:
+  apiKey: 63MjhhQGh4Bf4zPn5fmUYE9Y0g1egm4t
+  apiSecret: rIHW6UrmIG8Gl08M

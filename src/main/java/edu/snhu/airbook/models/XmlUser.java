@@ -4,6 +4,11 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
+/**
+ * XmlUser model.
+ *
+ * @author phongtran
+ */
 @Getter
 @XmlRootElement(name = "user")
 @AllArgsConstructor

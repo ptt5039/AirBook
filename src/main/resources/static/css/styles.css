@@ -23,3 +23,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-left: 15%;
     margin-right: 15%;
 }
+
+.price {
+    cursor: pointer;
+}
+
+.price:hover {
+    background-color: gray;
+}
+
+.center {
+    text-align: center;
+}
+
+.border-thin {
+    outline: thin solid;
+}

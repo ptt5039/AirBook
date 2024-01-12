@@ -34,8 +34,5 @@ public class FlightDto {
 
     private String arrivalTime;
 
-    private List<FlightOfferDto> flightOffers;
-
-    private List<FlightStopDto> flightStops;
-
+    private String flightDuration;
 }

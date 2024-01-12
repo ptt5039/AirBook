@@ -7751,8 +7751,3 @@ INSERT INTO AIRPORT (ICAO,IATA,NAME,STATE,COUNTRY) VALUES
 	 ('FVCH','CHJ','Chipinge Airport','Manicaland','ZW'),
 	 ('FVKB','KAB','Kariba Airport','Mashonaland West','ZW'),
 	 ('FVHA','HRE','Robert Gabriel Mugabe International Airport','Harare','ZW');
-
-INSERT INTO TRAVEL_CLASS (TRAVEL_CLASS_NAME) VALUES
-	 ('Economy'),
-	 ('Business'),
-	 ('First');

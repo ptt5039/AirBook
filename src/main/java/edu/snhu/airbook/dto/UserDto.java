@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * User DTO
+ * User DTO.
  *
  * @author phongtran
  */

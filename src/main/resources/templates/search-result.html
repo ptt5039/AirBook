@@ -21,40 +21,44 @@
             <div class="card">
                 <div class="card-body">
                     <h3 th:text="|Depart date: ${departDate}|"></h3>
-                    <table class="table table-borderless">
+                    <h5 th:class="${#lists.size(flightMap.get('departItineraries')) == 0 ? 'center' : 'd-none'}">No Flights Available, please choose a different date!</h5>
+                    <table th:class="${#lists.size(flightMap.get('departItineraries')) > 0 ? 'table table-borderless' : 'd-none'}">
                         <thead>
-                        <tr>
-                            <th scope="col">Departing flights</th>
-                            <th scope="col">Number of stops</th>
-                            <th class="p-3 mb-2 bg-primary text-white" scope="col">Economy Class</th>
-                            <th class="p-3 mb-2 bg-info text-white" scope="col">Business Class</th>
-                            <th class="p-3 mb-2 bg-success text-white" scope="col">First Class</th>
+                        <tr class="border-thin">
+                            <th class="p-1 mb-2" scope="col">Depart</th>
+                            <th class="p-1 mb-2" scope="col">Arrive</th>
+                            <th class="p-1 mb-2" scope="col">Duration</th>
+                            <th class="p-1 mb-2 bg-primary text-white" scope="col">Price</th>
                         </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                        <th:block th:each="flight : ${departFlights}">
-                            <tr th:id="${flight.flightId}">
+                        <th:block th:each="itinerary : ${flightMap.get('departItineraries')}">
+                            <tr th:id="${itinerary.flights[0].flightId}">
                                 <th scope="row">
-                                    <div th:text="|#${flight.flightNumber}|"></div>
-                                    <span th:text="${flight.departureTime}"></span>
-                                    <i class="bi bi-arrow-right"></i>
-                                    <span th:text="${flight.arrivalTime}"></span>
+                                    <div th:text="${itinerary.flights[0].departureAirport.iata}"></div>
+                                    <span th:text="${itinerary.flights[0].departureTime}"></span>
+                                </th>
+                                <th scope="row">
+                                    <div th:text="${itinerary.flights[#lists.size(itinerary.flights)-1].arrivalAirport.iata}"></div>
+                                    <span th:text="${itinerary.flights[#lists.size(itinerary.flights)-1].arrivalTime}"></span>
                                 </th>
                                 <td>
-                                    <span th:text="${#lists.size(flight.flightStops) > 0 ? #lists.size(flight.flightStops) + (#lists.size(flight.flightStops) == 1 ? ' stop' : ' stops') : 'Nonstop'}"></span>
+                                    <span th:text="${itinerary.duration}"></span>
                                     <br>
-                                    <span th:each="stop : ${flight.flightStops}">
+                                    <span th:text="${#lists.size(itinerary.flightStops) > 0 ? #lists.size(itinerary.flightStops) + (#lists.size(itinerary.flightStops) == 1 ? ' stop' : ' stops') : 'Nonstop'}"></span>
+                                    <br>
+                                    <span th:each="stop : ${itinerary.flightStops}">
                                         <span class="small"
                                               th:text="${stop.orderNumber == 1 ? 'Change planes at ' : ''}"></span>
                                         <span class="small" th:text="${stop.airport.iata}"></span>
                                         <span class="small"
-                                              th:text="${stop.orderNumber != #lists.size(flight.flightStops) ? ' and ' : ''}"></span>
+                                              th:text="${stop.orderNumber != #lists.size(itinerary.flightStops) ? ' and ' : ''}"></span>
                                     </span>
                                 </td>
-                                <td th:each="offer: ${flight.flightOffers}">
-                                    <div class="border border-secondary">
-                                        <span th:text="|$${offer.cost}|"></span>
-                                        <div class="small" th:text="|${offer.availableSeat} seat(s) left|"></div>
+                                <td>
+                                    <div class="border border-secondary price" th:id="${itinerary.itineraryId}">
+                                        <span th:value="${itinerary.flightOffer.cost}" th:text="|$${itinerary.flightOffer.cost}|"></span>
+                                        <div class="small" th:text="|${itinerary.flightOffer.availableSeat} seat(s) left|"></div>
                                     </div>
 
                                 </td>
@@ -67,7 +71,7 @@
 
         </div>
     </div>
-    <div th:class="${returnFlights != null ? '' : 'd-none'}">
+    <div th:class="${flightMap.get('returnItineraries') != null ? '' : 'd-none'}">
         <span class="h1">Return: </span>
         <span class="h2" th:text="|${arrivalAirport.iata} |"></span>
         <i class="h2 bi bi-airplane icon-rotate-90"></i>
@@ -77,41 +81,45 @@
             <div class="card">
                 <div class="card-body">
                     <h3 th:text="|Return date: ${returnDate}|"></h3>
-                    <table class="table table-borderless">
+                    <h5 th:class="${#lists.size(flightMap.get('returnItineraries')) == 0 ? 'center' : 'd-none'}">No Flights Available, please choose a different date!</h5>
+                    <table th:class="${#lists.size(flightMap.get('returnItineraries')) > 0 ? 'table table-borderless' : 'd-none'}">
                         <thead>
-                        <tr>
-                            <th scope="col">Returning flights</th>
-                            <th scope="col">Number of stops</th>
-                            <th class="p-3 mb-2 bg-primary text-white" scope="col">Economy Class</th>
-                            <th class="p-3 mb-2 bg-info text-white" scope="col">Business Class</th>
-                            <th class="p-3 mb-2 bg-success text-white" scope="col">First Class</th>
+                        <tr class="border-thin">
+                            <th class="p-1 mb-2" scope="col">Depart</th>
+                            <th class="p-1 mb-2" scope="col">Arrive</th>
+                            <th class="p-1 mb-2" scope="col">Duration</th>
+                            <th class="p-1 mb-2 bg-primary text-white" scope="col">Price</th>
                         </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                        <th:block th:each="flight : ${returnFlights}">
-                            <tr th:id="${flight.flightId}">
+                        <th:block th:each="itinerary : ${flightMap.get('returnItineraries')}">
+                            <tr th:id="${itinerary.flights[0].flightId}">
                                 <th scope="row">
-                                    <div th:text="|#${flight.flightNumber}|"></div>
-                                    <p th:text="|${flight.departureTime} -> ${flight.arrivalTime}"></p>
+                                    <div th:text="${itinerary.flights[0].departureAirport.iata}"></div>
+                                    <span th:text="${itinerary.flights[0].departureTime}"></span>
+                                </th>
+                                <th scope="row">
+                                    <div th:text="${itinerary.flights[#lists.size(itinerary.flights)-1].arrivalAirport.iata}"></div>
+                                    <span th:text="${itinerary.flights[#lists.size(itinerary.flights)-1].arrivalTime}"></span>
                                 </th>
                                 <td>
-                                    <span th:text="${#lists.size(flight.flightStops) > 0 ? #lists.size(flight.flightStops) + (#lists.size(flight.flightStops) == 1 ? ' stop' : ' stops') : 'Nonstop'}"></span>
+                                    <span th:text="${itinerary.duration}"></span>
                                     <br>
-                                    <span th:each="stop : ${flight.flightStops}">
+                                    <span th:text="${#lists.size(itinerary.flightStops) > 0 ? #lists.size(itinerary.flightStops) + (#lists.size(itinerary.flightStops) == 1 ? ' stop' : ' stops') : 'Nonstop'}"></span>
+                                    <br>
+                                    <span th:each="stop : ${itinerary.flightStops}">
                                         <span class="small"
                                               th:text="${stop.orderNumber == 1 ? 'Change planes at ' : ''}"></span>
                                         <span class="small" th:text="${stop.airport.iata}"></span>
                                         <span class="small"
-                                              th:text="${stop.orderNumber != #lists.size(flight.flightStops) ? ' and ' : ''}"></span>
+                                              th:text="${stop.orderNumber != #lists.size(itinerary.flightStops) ? ' and ' : ''}"></span>
                                     </span>
                                 </td>
-                                <td th:each="offer: ${flight.flightOffers}">
-                                    <p class="border border-secondary">
-                                        <span th:text="|$${offer.cost}|"></span>
-                                        <br>
-                                        <span class="small" th:text="|${offer.availableSeat} seat(s) left|"></span>
-                                    </p>
-
+                                <td>
+                                    <div class="border border-secondary price" th:id="${itinerary.itineraryId}">
+                                        <span th:text="|$${itinerary.flightOffer.cost}|"></span>
+                                        <div class="small" th:text="|${itinerary.flightOffer.availableSeat} seat(s) left|"></div>
+                                    </div>
                                 </td>
                             </tr>
                         </th:block>

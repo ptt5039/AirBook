@@ -15,8 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class FlightOfferDto {
-    private TravelClassDto travelClass;
-    private FlightDto flight;
     private int availableSeat;
-    private double cost;
+    private String cost;
 }

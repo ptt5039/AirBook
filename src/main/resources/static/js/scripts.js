@@ -11,16 +11,24 @@ var departureLocationText = document.getElementById("departLocationText");
 var arrivalAirportInput = document.getElementById("arrivalInput");
 var arrivalAirportSelect = document.getElementById("arrivalAirports");
 var arrivalLocationText = document.getElementById("arriveLocationText");
+var searchButton = document.getElementById("searchButton");
 var dtToday = new Date();
 
 //Search form handle validate check
 searchForm.addEventListener("submit", event => {
     if (!searchForm.checkValidity()) {
-      event.preventDefault()
-      event.stopPropagation()
+      event.preventDefault();
+      event.stopPropagation();
+      searchButton.disabled = false;
+      searchButton.innerText = "Search"
+    } else {
+      searchButton.disabled = true;
+      searchButton.innerText = "Searching..."
     }
-    searchForm.classList.add('was-validated')
+    searchForm.classList.add('was-validated');
+
 }, false)
+
 
 //Disable return date picker when One-way is select
 oneWayButton.addEventListener("click", tripSelector);
@@ -110,8 +118,7 @@ returnDateFieldInput.setAttribute("min", getISOFormattedDateString(dtToday, 0));
 function onDepartureDateInput(e) {
     var dateValue = e.target.value;
     var date = new Date(dateValue);
-    var departureDateText = getUTCFormattedDateString(date)
-    departureDateText.innerText = departureDateText;
+    departureDateText.innerText = getUTCFormattedDateString(date);
 
     returnDateFieldInput.setAttribute("min",  getISOFormattedDateString(date, 1));
 }

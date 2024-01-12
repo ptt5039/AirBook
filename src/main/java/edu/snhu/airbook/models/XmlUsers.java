@@ -9,6 +9,11 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Xml Users model.
+ *
+ * @author phongtran
+ */
 @XmlRootElement(name = "users")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
